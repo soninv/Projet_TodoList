@@ -1,0 +1,73 @@
+<section class="todoapp">
+  <header class="header">
+    <h1>{{ titre }}</h1>
+    <form (submit)="appendItem(newTodoInput.value); newTodoInput.value = ''">
+      <input
+        #newTodoInput
+        name="newTodoInput"
+        class="new-todo"
+        placeholder="Que faire?"
+        autofocus
+      />
+    </form>
+  </header>
+  <section class="main">
+    <input
+      (click)="toggleUntoggleAll()"
+      *ngIf="items.length > 0"
+      class="toggle-all"
+      type="checkbox"
+      name="toggleAll"
+    />
+    <button
+      *ngIf="items.length > 0"
+      (click)="clearAll()"
+      class="clear-all"
+      name="clearAll"
+      title="Effacer toutes les tâches"
+    ></button>
+
+    <ul class="todo-list">
+      <ng-container *ngFor="let item of items">
+        <li
+          *ngIf="
+            mode == 'All' ||
+            (mode == 'Completed' && item.isDone) ||
+            (mode == 'Active' && !item.isDone && !item.editing)
+          "
+          [ngClass]="{ completed: item.isDone, editing: item.editing }"
+        >
+          <app-todo-item [data]="item"></app-todo-item>
+        </li>
+      </ng-container>
+    </ul>
+  </section>
+  <footer *ngIf="items.length >= 1" class="footer">
+    <span class="todo-count"
+      ><strong>{{ getCountLeft() }}</strong>
+      {{ getCountLeft() > 1 ? "restantes" : "restante" }}</span
+    >
+    <ul class="filters">
+      <li>
+        <a (click)="mode = 'All'" [class.selected]="mode === 'All'">Tous</a>
+      </li>
+      <li>
+        <a (click)="mode = 'Active'" [class.selected]="mode === 'Active'"
+          >Actifs</a
+        >
+      </li>
+      <li>
+        <a (click)="mode = 'Completed'" [class.selected]="mode === 'Completed'"
+          >Complétés</a
+        >
+      </li>
+    </ul>
+    <button
+      *ngIf="items.length != getCountLeft()"
+      (click)="removeDoneItems()"
+      class="clear-completed"
+    >
+      Supprimer cochées
+    </button>
+  </footer>
+</section>

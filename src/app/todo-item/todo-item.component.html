@@ -1,0 +1,26 @@
+<input
+  class="toggle"
+  type="checkbox"
+  name="fait"
+  [ngModel]="data.isDone"
+  (ngModelChange)="itemDone(data, $event)"
+/>
+
+<button *ngIf="!data.editing" class="destroy" (click)="removeItem(data)"></button>
+
+<label 
+  (click)="editData(data, true)" 
+  *ngIf="!data.editing" 
+  class="texte">{{ data.label }}
+</label>
+
+
+
+<input
+  #newTextInput
+  *ngIf="data.editing"
+  name="newTextInput"
+  class="edit"
+  value="{{ data.label }}"
+  (keyup.enter)="setLabel(data, newTextInput.value);editData(data, false)"
+/>
