@@ -11,7 +11,7 @@
 +Sérialisation / Déserialisation (LocalStorage)
 +Undo/Redo
 
-# étails sur les fonctionnalités et problèmes rencontré.
+# Détails sur les fonctionnalités et problèmes rencontré.
 
 J'ai eu le souci avec Undo/Redo lequel je n’ai pas réussi résoudre, implication de ses méthodes ne s’affiche pas sur l’écran pourtant dans le code ça semble être fait correctement. 
 
