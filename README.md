@@ -1,4 +1,21 @@
-# PWA-TP3
+# QUICK START
+  1) git clone https://github.com/soninv/Projet_TodoList.git
+
+  2) npm install 
+
+  3) npm start 
+  
+## Fonctionnalités implémentées
++Tous les Filtres
++Effacer Tout 
++Sérialisation / Déserialisation (LocalStorage)
++Undo/Redo
+
+# étails sur les fonctionnalités et problèmes rencontré.
+
+J'ai eu le souci avec Undo/Redo lequel je n’ai pas réussi résoudre, implication de ses méthodes ne s’affiche pas sur l’écran pourtant dans le code ça semble être fait correctement. 
+
+Dans la liste que vous nous avons fournis j’ai indiqué que je voulais faire aussi Localisation et Reconnaissance vocale mais je ne les ai pas faits à cause qu’au début je me suis lancer sur plusieurs fonctionnalités en même temps pour voir comment ils marchent en essayant les implique (comme par exemple Progressive Web App) mais à la fin j’ai perdu trop du temps sur ça.
 
 ## Development server
 
