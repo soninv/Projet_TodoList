@@ -30,6 +30,7 @@ export class TodoService {
       label: tdl.label,
       items: tdl.items.map( I => items.indexOf(I) === -1 ? I : ({label: I.label, isDone, editing: false}) )
     });
+    localStorage.setItem("items", JSON.stringify({ items: items } ));
   }
 
   //Passe en mode editing ou non editing les items passes en argument
@@ -39,6 +40,7 @@ export class TodoService {
       label: tdl.label,
       items: tdl.items.map( I => items.indexOf(I) === -1 ? I : ({label: I.label, isDone: I.isDone, editing: isEditing}) )
     });
+    localStorage.setItem("items", JSON.stringify({ items: items } ));
   }
 
   //Ajoute les items passes en argument a la liste des items
@@ -48,6 +50,7 @@ export class TodoService {
       label: tdl.label, // ou on peut écrire: ...tdl,
       items: [...tdl.items, ...items]
     });
+    localStorage.setItem("items", JSON.stringify({ items: items } ));
   }
 
     //Retire les items passes en argument de la liste
