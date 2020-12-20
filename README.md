@@ -6,9 +6,12 @@
   3) npm start 
   
 ## Fonctionnalités implémentées
-+Tous les Filtres
-+Effacer Tout 
++Tous les Filtres 
+ 
++Effacer Tout  
+
 +Sérialisation / Déserialisation (LocalStorage)
+
 +Undo/Redo
 
 # Détails sur les fonctionnalités et problèmes rencontré.
