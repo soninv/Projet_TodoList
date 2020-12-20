@@ -13,11 +13,15 @@
 
   
 ## Fonctionnalités implémentées
+
 +Tous les Filtres 
  
+
 +Effacer Tout  
 
+
 +Sérialisation / Déserialisation (LocalStorage)
+
 
 +Undo/Redo
 
