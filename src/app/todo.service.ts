@@ -8,7 +8,11 @@ var stock;
 export class TodoService {
 
   private todoListSubject = new BehaviorSubject<TodoListData>( {label: 'TodoList', items: []} );
-  constructor() { }
+  AnnulerRetablir: [TodoItemData[]] = [[]];
+  indexAR = 0;
+  constructor() {
+
+   }
 
   getTodoListDataObserver(): Observable<TodoListData> {
     return this.todoListSubject.asObservable();
@@ -79,5 +83,37 @@ export class TodoService {
   }
 
 
+
+  // methodes Undo Redo
+  Actionannuler(): void {
+    if (this.indexAR > 0) {
+      this.indexAR--;
+      this.todoListSubject.value.items = this.AnnulerRetablir[this.indexAR];
+      this.setLocalStorageItemsTodolist(this.todoListSubject.value.items);
+    }
+
+  }
+  Actionretablir(): void {
+    if (this.AnnulerRetablir.length > this.indexAR + 1) {
+      this.indexAR++;
+      this.todoListSubject.value.items = this.AnnulerRetablir[this.indexAR];
+      this.setLocalStorageItemsTodolist(this.todoListSubject.value.items);
+    }
+  }
+
+  ajouterannulretablirAction(items: TodoItemData[] ) {
+    if ( typeof items !== 'undefined') { 
+      if (this.indexAR + 1 < this.AnnulerRetablir.length ) {
+        const buf: [TodoItemData[]] = [[]];
+        for (let i = 0; i <= this.indexAR ; i++) {
+            buf[i] = this.AnnulerRetablir[i];
+        }
+        this.AnnulerRetablir = buf;
+      }
+      this.AnnulerRetablir.push(this.todoListSubject.value.items);
+      this.indexAR++;
+    }
+
+  }
 
 }

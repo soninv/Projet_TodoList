@@ -9,4 +9,26 @@ import {TodoItemData} from './dataTypes/TodoItemData';
   styleUrls: ['./app.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {}
+export class AppComponent {
+
+  private todolist: TodoListData;
+constructor(private todoService: TodoService) {
+  
+todoService.getTodoListDataObserver().subscribe(
+L => this.todolist = L
+);
+}
+// permet de recuperer la todolist entiere 
+getTodolistCourante(): TodoListData {
+  return this.todolist;
+}
+  // fait appel a la methode situé dans le todoservice
+Retablir(): void {
+  this.todoService.Actionannuler();
+}
+Annuler(): void {
+  this.todoService.Actionretablir();
+}
+
+
+}

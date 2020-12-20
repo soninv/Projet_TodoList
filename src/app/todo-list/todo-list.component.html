@@ -1,6 +1,8 @@
 <section class="todoapp">
   <header class="header">
     <h1>{{ titre }}</h1>
+   
+
     <form (submit)="appendItem(newTodoInput.value); newTodoInput.value = ''">
       <input
         #newTodoInput
@@ -71,3 +73,6 @@
     </button>
   </footer>
 </section>
+<button type="button"  (click) = "Annuler()">&#8855; Annuler</button>
+    
+<button type="button" (click) = "Retablir()">&#8634; Rétablir</button>

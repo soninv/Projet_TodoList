@@ -106,4 +106,12 @@ export class TodoListComponent implements OnInit {
       });
     }
   }
+    //--Undo - Redo
+  Annuler(): void {
+    this.todoService.Actionannuler();
+  }
+  Retablir(): void {
+    this.todoService.Actionretablir();
+  }
+  
 }
